@@ -1,25 +1,233 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34009.444
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tugas pm5", "Tugas pm5.csproj", "{8552654C-DE1A-4086-8AF7-EB0F92E449E3}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8552654C-DE1A-4086-8AF7-EB0F92E449E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8552654C-DE1A-4086-8AF7-EB0F92E449E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8552654C-DE1A-4086-8AF7-EB0F92E449E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8552654C-DE1A-4086-8AF7-EB0F92E449E3}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7AD3DFF5-F1B2-4C0C-9048-8E31E1BCA129}
-	EndGlobalSection
-EndGlobal
+using PBO;
+using System;
+using System.Reflection.Metadata;
+
+namespace PBO
+{
+    public class Processor
+    {
+        public string merk;
+        public string tipe;
+        public Processor(string _merk, string _tipe)
+        {
+            this.merk = _merk;
+            this.tipe = _tipe;
+        }
+    } 
+
+    public class Intel : Processor
+    {
+        public Intel(string _tipe, string _merk = "Intel") : base(_merk, _tipe)
+        {
+
+        }
+    }
+
+    public class AMD : Processor
+    {
+        public AMD(string _tipe, string _merk =  "AMD") : base(_merk, _tipe)
+        {
+
+        }
+    }
+
+    public class Corei3 : Intel
+    {
+        public Corei3(string _merk = "Intel", string _tipe = "Corei3") : base(_merk, _tipe)
+        {
+
+        }
+    }
+    public class Corei5 : Intel
+    {
+        public Corei5(string _merk = "Intel", string _tipe = "Corei5") : base(_merk, _tipe)
+        {
+        }
+    }
+    public class Corei7 : Intel
+    {
+        public Corei7(string _merk = "Intel", string _tipe = "Corei7") : base(_merk, _tipe)
+        {
+
+        }
+    }
+
+    public class Ryzen : AMD
+    {
+        public Ryzen(string _merk = "AMD", string _tipe = "RAYZEN") : base(_merk, _tipe)
+        {
+
+        }
+    }
+
+    public class Athlon : AMD
+    {
+        public Athlon(string _merk = "AMD", string _tipe = "ATHLON") : base(_merk, _tipe)
+        {
+
+        }
+    }
+
+    public class Vga
+    {
+        public string merk;
+        public Vga(string _merk)
+        {
+            this.merk = _merk;
+        }
+    }
+
+    public class Nvidia : Vga
+    {
+        public Nvidia(string _merk = "Nvidia") : base(_merk)
+        {
+
+        }
+    }
+    public class Amd : Vga
+    {
+        public Amd(string _merk = "AMD") : base(_merk)
+        {
+
+        }
+    }
+
+    public class Laptop
+    {
+        public string merk;
+        public string tipe;
+        public Vga vga;
+        public Processor processor;
+
+        public Laptop(string _merk, string _tipe, Vga _Vga, Processor _Processor)
+        {
+            this.merk = _merk;
+            this.tipe = _tipe;
+            this.vga = _Vga;
+            this.processor = _Processor;
+        }   
+
+        public void LaptopDinyalakan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} menyala");
+        }
+        public void LaptopDimatikan()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} mati");
+        }
+        public void BermainGame()
+        {
+            Console.WriteLine($"Laptop {merk} {tipe} sedang memainkan game");
+        }
+        public void Ngoding()
+        {
+            Console.WriteLine("Ctak Ctak Ctak, error lagi!!");
+        }
+    }
+
+    public class ASUS : Laptop
+    {
+        public ASUS(string _tipe, Vga _vga, Processor _Processor, string _merk = "ASUS") : base(_merk, _tipe, _vga, _Processor)
+        {
+        
+        }
+    }
+    public class ROG : ASUS
+    {
+        public ROG(Vga _vga, Processor _Processor, string _merk = "ASUS", string _tipe = "ROG") : base(_tipe, _vga, _Processor, _merk)
+        {
+        
+        }   
+    }
+    public class Vivobook : ASUS
+    {
+        public Vivobook(Vga _vga, Processor _Processor, string _merk = "ASUS", string _tipe = "Vivobook") : base(_tipe, _vga, _Processor, _merk)
+        {
+
+        }
+    }
+
+    public class ACER : Laptop
+    {
+        public ACER(string _tipe, Vga _vga, Processor _Processor, string _merk = "ACER") : base(_merk, _tipe, _vga, _Processor)
+        {
+
+        }
+    }
+    public class Swift : ACER
+    {
+        public Swift(Vga _vga, Processor _Processor, string _merk = "ACER", string _tipe = "Swift") : base(_tipe, _vga, _Processor, _merk)
+        {
+
+        }
+    }
+    public class Predator : ACER
+    {
+        public Predator(Vga _vga, Processor _Processor, string _merk = "ACER", string _tipe = "Predator") : base(_tipe, _vga, _Processor, _merk)
+        {
+
+        }
+    }
+
+    public class Lenovo : Laptop
+    {
+        public Lenovo(string _tipe, Vga _vga, Processor _Processor, string _merk = "Lenovo") : base(_merk, _tipe, _vga, _Processor)
+        {
+
+        }
+    }
+    public class IdeaPad : Lenovo
+    {
+        public IdeaPad(Vga _vga, Processor _Processor, string _merk = "Lenovo", string _tipe = "IdeaPad") : base(_tipe, _vga, _Processor, _merk)
+        {
+
+        }
+    }
+    public class Legion : Lenovo
+    {
+        public Legion(Vga _vga, Processor _Processor, string _merk = "Lenovo", string _tipe = "ASUS") : base(_tipe, _vga, _Processor, _merk)
+        {
+
+        }
+    }
+
+    class program
+    {
+        static void Main()
+        {
+
+            Laptop laptop1 = new Vivobook(new Nvidia(), new Corei5());
+            Laptop laptop2 = new IdeaPad(new Amd(), new Ryzen());
+            Predator predator = new Predator(new Amd(), new Corei7());
+
+            //soal no.1
+            Console.WriteLine("No.1");
+            laptop2.LaptopDinyalakan();
+            laptop2.LaptopDimatikan();
+            Console.WriteLine(" ");
+
+            //soal no.2
+            Console.WriteLine("No.2");
+            laptop1.Ngoding();
+            Console.WriteLine(" ");
+
+            //soal no.3
+            Console.WriteLine("No.3");
+            Console.WriteLine("Spesifikasi Laptop1 (merk vga, merk processor, tipe processor) :");
+            Console.WriteLine($"Merk vga : {laptop1.vga.merk}");
+            Console.WriteLine($"Merk processor : {laptop1.processor.merk}");
+            Console.WriteLine($"Tipe processor : {laptop1.processor.tipe}");
+            Console.WriteLine(" ");
+
+            //soal no.4
+            Console.WriteLine("No.4");
+            predator.BermainGame();
+            Console.WriteLine(" ");
+
+            //soal no.5
+            Console.WriteLine("No.5");
+            ACER acer = new Predator(new Nvidia(), new Corei7());
+            acer.BermainGame();
+        }
+    }
+}
